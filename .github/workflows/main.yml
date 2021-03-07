@@ -44,4 +44,6 @@ jobs:
           HAIDAN_LOGIN: ${{ secrets.HAIDAN_LOGIN }}
           HAIDAN_MULTI: ${{ secrets.HAIDAN_MULTI }}
           HAIDAN_PRIVACY: ${{ secrets.HAIDAN_PRIVACY }}
+
+          FLB_COOKIES: ${{ secrets.FLB_COOKIES }}
         run: python main.py #>SMZDM_Bot.log
