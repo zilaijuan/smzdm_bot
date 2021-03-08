@@ -4,6 +4,6 @@ import wndflb
 
 smzdm.start()
 
-haidan.main()
-
 wndflb.start()
+
+haidan.main()

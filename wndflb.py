@@ -72,6 +72,7 @@ def start():
     res = sb.checkin()
     print(res)
     print('代码完毕')
+    print('-> 任务圆满完成')
 
 if __name__ == '__main__':
     start()
