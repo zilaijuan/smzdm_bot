@@ -62,6 +62,9 @@ class SMZDM_Bot(object):
 
 
 def start():
+    print("=================================================")
+    print("||                 FLB Sign                    ||")
+    print("=================================================")
     sb = SMZDM_Bot()
     # sb.load_cookie_str(config.TEST_COOKIE)
     cookies = os.environ["FLB_COOKIES"]
