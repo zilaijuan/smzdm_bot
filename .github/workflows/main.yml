@@ -46,4 +46,7 @@ jobs:
           HAIDAN_PRIVACY: ${{ secrets.HAIDAN_PRIVACY }}
 
           FLB_COOKIES: ${{ secrets.FLB_COOKIES }}
+
+          SHHUU_COOKIES: ${{ secrets.SHHUU_COOKIES }}
+          
         run: python main.py #>SMZDM_Bot.log
