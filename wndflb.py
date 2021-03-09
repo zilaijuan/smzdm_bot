@@ -56,8 +56,8 @@ class SMZDM_Bot(object):
         
         url = 'http://www.wnflb2020.com/plugin.php?id=fx_checkin:checkin&formhash=c36b4937&c36b4937&infloat=yes&handlekey=fx_checkin&inajax=1&ajaxtarget=fwin_content_fx_checkin'
         msg = self.session.get(url)
-        if self.__json_check(msg):
-            return msg.json()
+        # if self.__json_check(msg):
+        #     return msg.json()
         return msg.content
 
 
