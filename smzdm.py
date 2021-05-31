@@ -22,7 +22,6 @@ class SMZDM_Bot(object):
         """
         try:
             result = msg.json()
-            print(result)
             return True
         except Exception as e:
             print(f'Error : {e}')            
@@ -40,10 +39,6 @@ class SMZDM_Bot(object):
         """
         签到函数
         """
-        
-        url = 'https://teleme.io/campaign-srv/attendance/23W7K9X8DP8C/signin?token=4099b0d7'
-        self.session.post(url)
-        
         url = 'https://zhiyou.smzdm.com/user/checkin/jsonp_checkin'
         msg = self.session.get(url)
         if self.__json_check(msg):
@@ -51,9 +46,25 @@ class SMZDM_Bot(object):
         return msg.content
 
 
+def start():
+    sb = SMZDM_Bot()
+    sb.load_cookie_str(config.TEST_COOKIE)
+    # cookies = os.environ["COOKIES"]
+    # sb.load_cookie_str(cookies)
+    res = sb.checkin()
+    SERVERCHAN_SECRETKEY = os.environ["SERVERCHAN_SECRETKEY"]
+    print('sc_key: ', SERVERCHAN_SECRETKEY)
+    if isinstance(SERVERCHAN_SECRETKEY,str) and len(SERVERCHAN_SECRETKEY)>0:
+        if res['error_code'] != 0:
+            print('检测到 SCKEY， 准备推送')
+            push_to_wechat(text = '什么值得买每日签到',
+                            desp = str(res),
+                            secretKey = SERVERCHAN_SECRETKEY)
+    print('代码完毕')
 
 
 if __name__ == '__main__':
+    '''
     sb = SMZDM_Bot()
     # sb.load_cookie_str(config.TEST_COOKIE)
     cookies = os.environ["COOKIES"]
@@ -68,19 +79,5 @@ if __name__ == '__main__':
                         desp = str(res),
                         secretKey = SERVERCHAN_SECRETKEY)
     print('代码完毕')
-
-def start():
-    sb = SMZDM_Bot()
-    # sb.load_cookie_str(config.TEST_COOKIE)
-    cookies = os.environ["COOKIES"]
-    sb.load_cookie_str(cookies)
-    res = sb.checkin()
-    print(res)
-    SERVERCHAN_SECRETKEY = os.environ["SERVERCHAN_SECRETKEY"]
-    print('sc_key: ', SERVERCHAN_SECRETKEY)
-    if isinstance(SERVERCHAN_SECRETKEY,str) and len(SERVERCHAN_SECRETKEY)>0:
-        print('检测到 SCKEY， 准备推送')
-        push_to_wechat(text = '什么值得买每日签到',
-                        desp = str(res),
-                        secretKey = SERVERCHAN_SECRETKEY)
-    print('代码完毕')
+    '''
+    start()
