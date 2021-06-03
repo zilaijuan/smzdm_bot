@@ -48,9 +48,9 @@ class SMZDM_Bot(object):
 
 def start():
     sb = SMZDM_Bot()
-    sb.load_cookie_str(config.TEST_COOKIE)
-    # cookies = os.environ["COOKIES"]
-    # sb.load_cookie_str(cookies)
+    # sb.load_cookie_str(config.TEST_COOKIE)
+    cookies = os.environ["COOKIES"]
+    sb.load_cookie_str(cookies)
     res = sb.checkin()
     SERVERCHAN_SECRETKEY = os.environ["SERVERCHAN_SECRETKEY"]
     print('sc_key: ', SERVERCHAN_SECRETKEY)
